@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2024 a las 21:49:44
+-- Tiempo de generación: 16-10-2024 a las 23:25:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,25 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `transacciones`
+-- Estructura de tabla para la tabla `plataformas`
 --
 
-CREATE TABLE `transacciones` (
-  `ID_Transaccion` int(11) NOT NULL,
-  `ID_Cliente` int(11) NOT NULL,
-  `ID_Juego` int(11) NOT NULL,
-  `Precio` int(11) NOT NULL,
-  `Formato` varchar(50) NOT NULL,
-  `Plataforma` varchar(50) NOT NULL
+CREATE TABLE `plataformas` (
+  `id_plataforma` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `fabricante` varchar(50) NOT NULL,
+  `tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `transacciones`
+-- Volcado de datos para la tabla `plataformas`
 --
 
-INSERT INTO `transacciones` (`ID_Transaccion`, `ID_Cliente`, `ID_Juego`, `Precio`, `Formato`, `Plataforma`) VALUES
-(1, 1, 2, 5000, 'Digital', 'Microsoft Windows'),
-(2, 2, 1, 72000, 'Blu-ray Disc', 'PS4');
+INSERT INTO `plataformas` (`id_plataforma`, `nombre`, `fabricante`, `tipo`) VALUES
+(1, 'Playstation 4', 'Sony', 'Consola'),
+(2, 'Steam', 'Valve', 'PC'),
+(3, 'Playstation 5', 'Sony', 'Consola'),
+(4, 'Xbox One', 'Microsoft', 'Consola'),
+(5, 'Xbox Series S', 'Microsoft', 'Consola');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,67 +64,81 @@ INSERT INTO `transacciones` (`ID_Transaccion`, `ID_Cliente`, `ID_Juego`, `Precio
 --
 
 CREATE TABLE `videojuegos` (
-  `ID_Juego` int(11) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Desarrollador` varchar(50) NOT NULL,
-  `Distribuidor` varchar(50) NOT NULL,
-  `Genero` varchar(50) NOT NULL,
-  `Fecha de lanzamiento` date NOT NULL,
-  `Formato` varchar(75) NOT NULL,
-  `Plataformas` varchar(75) NOT NULL,
-  `Modos de juego` varchar(75) NOT NULL
+  `id_juego` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `desarrollador` varchar(50) NOT NULL,
+  `distribuidor` varchar(50) NOT NULL,
+  `genero` varchar(50) NOT NULL,
+  `fecha_lanzamiento` date NOT NULL,
+  `id_plataforma` int(11) NOT NULL,
+  `modos_de_juego` varchar(50) NOT NULL,
+  `precio` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `videojuegos`
 --
 
-INSERT INTO `videojuegos` (`ID_Juego`, `Nombre`, `Desarrollador`, `Distribuidor`, `Genero`, `Fecha de lanzamiento`, `Formato`, `Plataformas`, `Modos de juego`) VALUES
-(1, 'Red Dead Redemption 2', 'Rockstar Games', 'Rockstar Games', 'Acción-aventura/Mundo abierto', '2019-12-05', 'Blu-ray Disc/Digital', 'Microsoft Windows/PlayStation 4/Xbox One', 'Un jugador/Multijugador'),
-(2, 'Mount and Blade: Warband', 'TaleWorlds Entertainment', 'Paradox Interactive', 'Acción-aventura/estrategia', '2010-08-12', 'Blu-ray Disc/Digital', 'Microsoft Windows/PlayStation 4/Xbox One', 'Un jugador/Multijugador');
+INSERT INTO `videojuegos` (`id_juego`, `nombre`, `desarrollador`, `distribuidor`, `genero`, `fecha_lanzamiento`, `id_plataforma`, `modos_de_juego`, `precio`) VALUES
+(26, 'Red Dead Redemption 2', 'Rockstar Games', 'Rockstar Games', 'Acción-Aventura/Mundo Abierto', '2019-11-05', 1, 'UnJugador/Multijugador', 72000),
+(27, 'Mount & Blade: Warband', 'TaleWorlds Entertainment', 'Paradox Interactive', 'Acción/Rol/Estrategia', '2010-03-30', 2, 'UnJugador-Multijugador', 4500),
+(28, 'juego1', 'desarrollador1', 'distribuidor1', 'genero1', '2024-10-24', 2, 'mododejuego1', 50000);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `transacciones`
+-- Indices de la tabla `plataformas`
 --
-ALTER TABLE `transacciones`
-  ADD PRIMARY KEY (`ID_Transaccion`),
-  ADD KEY `Id_Producto` (`ID_Juego`);
+ALTER TABLE `plataformas`
+  ADD PRIMARY KEY (`id_plataforma`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `videojuegos`
 --
 ALTER TABLE `videojuegos`
-  ADD PRIMARY KEY (`ID_Juego`);
+  ADD PRIMARY KEY (`id_juego`),
+  ADD KEY `plataforma` (`id_plataforma`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `transacciones`
+-- AUTO_INCREMENT de la tabla `plataformas`
 --
-ALTER TABLE `transacciones`
-  MODIFY `ID_Transaccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `plataformas`
+  MODIFY `id_plataforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `videojuegos`
 --
 ALTER TABLE `videojuegos`
-  MODIFY `ID_Juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `transacciones`
+-- Filtros para la tabla `videojuegos`
 --
-ALTER TABLE `transacciones`
-  ADD CONSTRAINT `transacciones_ibfk_1` FOREIGN KEY (`ID_Juego`) REFERENCES `videojuegos` (`ID_Juego`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `videojuegos`
+  ADD CONSTRAINT `videojuegos_ibfk_1` FOREIGN KEY (`id_plataforma`) REFERENCES `plataformas` (`id_plataforma`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
