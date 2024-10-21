@@ -1,0 +1,54 @@
+<h1>Administrar tabla videojuegos</h1>
+
+<form action="add_videogames" method="POST">
+    <div>
+        <label>nombre:</label>
+            <input class="input-form-agregar" type="text" name="nombre" required>
+    </div>
+
+    <div>
+        <label>desarrollador:</label>
+         <input class="input-form-agregar" type="text" name="desarrollador" required>
+    </div>
+
+    <div>
+        <label>distribuidor:</label>
+         <input class="input-form-agregar" type="text" name="distribuidor" required>
+    </div>
+
+    <div>
+        <label>género:</label>
+            <input class="input-form-agregar" type="text" name="genero" required>
+</div>
+
+    <div>
+        <label>fecha de lanzamiento:</label>
+            <input class="input-form-agregar" type="date" name="fecha_lanzamiento" required>
+</div>
+
+    <div>
+        <label>plataforma:</label>
+        <select name="id_plataforma">
+            <?php foreach ($platforms as $platform): ?>
+                <option value="<?=$platform->id_plataforma?>">ID  <?=htmlspecialchars($platform->id_plataforma)?> | <?=htmlspecialchars($platform->plataforma)?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+
+    <div>
+        <label>modos de juego:</label>
+            <input class="input-form-agregar" class="input-form-agregar" type="text" name="modos_de_juego" required>
+    </div>
+
+    <div>
+        <label>precio:</label>
+            <input class="input-form-agregar" type="number" name="precio" required>
+    </div>
+   
+    
+    
+    
+   
+    
+    <button type="submit">Añadir</button>
+</form>

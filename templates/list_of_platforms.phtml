@@ -1,0 +1,24 @@
+<?php require_once 'templates/layout/header.phtml'; ?>
+
+
+<section>
+    <h1>PLATAFORMAS</h1>
+    <?php if(!empty($platforms)): ?>
+        <ul>
+        <?php foreach($platforms as $platform): ?>
+    <div class="div-lista-videojuegos">
+        <a class="link-elemento-videojuego" href="view_detail_game/<?=htmlspecialchars($platform->id_plataforma)?>">
+        <li class="elemento-videojuego"><h2><?=htmlspecialchars($platform->plataforma)?></h2></li>
+        <li class="elemento-videojuego">$<?= htmlspecialchars($platform->fabricante)?></li>
+        <li class="elemento-videojuego"><h3><?= htmlspecialchars($platform->tipo)?></h2></li>
+        </a>
+    </div>
+        <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <p>No hay plataformas en la lista.</p>
+    <?php endif ?>
+</section>
+
+
+<?php require_once 'templates/layout/footer.phtml'; ?>

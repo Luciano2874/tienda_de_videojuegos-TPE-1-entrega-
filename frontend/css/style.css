@@ -1,0 +1,101 @@
+body {
+    font-size: 1.5em;
+}
+
+
+
+body, .input-form-agregar, label, button {
+    font-weight: bold;
+}
+
+.input-form-agregar, select, option, button {
+    font-size: 1em;
+}
+
+.input-form-editar {
+    font-size: 0.80em;
+    width: 90%;
+}
+
+.span-atributo-videojuego {
+    color: rgb(82, 0, 176);
+}
+
+
+
+header, .lista-navegacion, .detalle-videojuego {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+h1, p, .nombre-detalle-videojuego {
+    text-align: center;
+}
+
+h1, h2, .lista-navegacion, label, button {
+    text-transform: uppercase;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.link_nav {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    border: solid black 2px;
+    padding: 5px;
+}
+
+.div-lista-videojuegos, .div-detalle-videojuegos {
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 3px;
+}
+
+.div-detalle-videojuegos {
+    border: solid black 2px;
+    padding: 5px;
+}
+
+.link-elemento-videojuego {
+    padding: 0;
+    border: solid black 3px;
+}
+.elemento-videojuego {
+    width: 500px;
+    padding: 5px;
+}
+
+body {
+    background: linear-gradient(to left, rgb(250, 86, 86), rgb(251, 238, 53));
+}
+
+table, .elemento-videojuego, a, .div-detalle-videojuegos, button {
+   /* background: linear-gradient(to right, rgb(86, 132, 250), rgb(255, 241, 46)); */
+    background: linear-gradient(to right, rgb(255, 104, 104), rgb(255, 197, 88));
+}
+
+table, th, tr, td {
+    border: solid black 2px;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table {
+    margin-bottom: 30px;
+}
+

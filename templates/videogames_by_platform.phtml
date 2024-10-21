@@ -1,0 +1,22 @@
+<?php require_once 'templates/layout/header.phtml'; ?>
+
+<section>
+    <h1>VIDEOJUEGOS</h1>
+    <?php if(!empty($videogamesByPlatforms)): ?>
+        <ul>
+        <?php foreach($videogamesByPlatforms as $videogamesByPlatform): ?>
+    <div class="div-lista-videojuegos">
+        <a class="link-elemento-videojuego" href="view_detail_game/<?=htmlspecialchars($videogamesByPlatforms->id_juego)?>">
+        <li class="elemento-videojuego"><h2><?=htmlspecialchars($videogamesByPlatforms->nombre)?></h2></li>
+        <li class="elemento-videojuego">$<?= htmlspecialchars($videogamesByPlatforms->precio)?></li>
+        <li class="elemento-videojuego"><h3><?= htmlspecialchars($videogamesByPlatforms->plataforma)?></h2></li>
+        </a>
+    </div>
+        <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <p>No hay videojuegos en la lista.</p>
+    <?php endif ?>
+</section>
+
+<?php require_once 'templates/layout/footer.phtml'; ?>

@@ -1,0 +1,23 @@
+<?php require 'templates/layout/header.phtml'; ?>
+<?php if(!empty($videogame)): ?>
+<h2 class="nombre-detalle-videojuego"><?= htmlspecialchars($videogame->nombre) ?></h2>
+<section class="detalle-videojuego">
+        <div class="div-detalle-videojuegos">
+            <ul>
+                <li>Género: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->genero) ?></span></li>
+                <li>Distribuidor: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->distribuidor) ?></span></li>
+                <li>Desarrollador: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->desarrollador) ?></span></li>
+                <li>Fecha de lanzamiento: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->fecha_lanzamiento) ?></span></li>
+                <li>Plataforma: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->plataforma) ?></span></li>
+                <li>Modos de juego: <span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->modos_de_juego)?></span></li>
+                <li>Precio: $<span class="span-atributo-videojuego"><?= htmlspecialchars($videogame->precio)?></span></li>
+            </ul>
+        </div>
+    <?php else: ?>
+        <p>El item no existe.</p>
+    <?php endif ?>
+</section>
+
+<a href="list_of_videogames"><-Volver</a>
+
+<?php require 'templates/layout/footer.phtml'; ?>

@@ -1,0 +1,44 @@
+<?php require 'templates/layout/header.phtml'; ?>
+<?php require 'templates/form_videogames.phtml'; ?>
+
+<?php if(!empty($videogamesWithPlatforms)): ?>
+
+<table>
+    <thead>
+        <th>id_juego</th>
+        <th>Nombre</th>
+        <th>Desarrollador</th>
+        <th>Distribuidor</th>
+        <th>Género</th>
+        <th>Fecha de lanzamiento</th>
+        <th>Plataforma</th>
+        <th>Modos de juego</th>
+        <th>Precio</th>
+    </thead>
+    <?php foreach($videogamesWithPlatforms as $videogameWithPlatform): ?>
+        <tr>
+        <td><?=htmlspecialchars($videogameWithPlatform->id_juego)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->nombre)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->desarrollador)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->distribuidor)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->genero)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->fecha_lanzamiento)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->plataforma)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->modos_de_juego)?></td>
+            <td><?=htmlspecialchars($videogameWithPlatform->precio)?></td>
+            <td>
+                <a href="manage_videogames/edit_videogame/<?= $videogameWithPlatform->id_juego ?>" type="button" class='btn btn-danger ml-auto'>Editar</a>
+            </td>
+            <td>
+                <a href="delete_videogame/<?= $videogameWithPlatform->id_juego ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>
+
+<?php else: ?>
+    <p>No existe ningún item.</p>
+<?php endif ?>
+
+
+<?php require 'templates/layout/footer.phtml'; ?>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<?php echo BASE_URL ?>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videogames store</title>
+    <link rel="stylesheet" href="./frontend/css/style.css">
+</head>
+<body>
+    <h1><a href="home">Videogames store</a></h1>
+    <header>
+        <div>
+            <nav>
+                <ul class="lista-navegacion">
+                    <li class="link_nav"><a href="home">home</a></li>
+                    <li class="link_nav"><a href="list_of_videogames">videojuegos</a></li>
+                    <li class="link_nav"><a href="list_of_platforms">plataformas</a></li>
+                    <?php if(!($this->user)): ?>
+                        <li class="link_nav"><a href="showLogin">login</a></li>
+                    <?php else: ?>
+                        <li class="link_nav"><a href="manage_videogames">administrar videojuegos</a></li>
+                        <li class="link_nav"><a href="manage_platforms">administrar categorías</a></li>
+                        <li class="link_nav"><a href="logout">logout</a></li>
+                    <?php endif ?>    
+                </ul>
+            </nav>
+        </div>
+        <?php if($this->user): ?>
+            <span><?=$this->user->email?></span>
+        <?php endif ?>
+    </header>

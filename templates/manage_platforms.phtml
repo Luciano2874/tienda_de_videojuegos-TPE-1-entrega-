@@ -1,0 +1,34 @@
+<?php require 'templates/layout/header.phtml'; ?>
+<?php require 'templates/form_platforms.phtml'; ?>
+
+<?php if(!empty($platforms)): ?>
+
+<table>
+    <thead>
+        <th>id_plataforma</th>
+        <th>Plataforma</th>
+        <th>Fabricante</th>
+        <th>Tipo</th>
+    </thead>
+    <?php foreach($platforms as $platform): ?>
+        <tr>
+        <td><?=htmlspecialchars($platform->id_plataforma)?></td>
+            <td><?=htmlspecialchars($platform->plataforma)?></td>
+            <td><?=htmlspecialchars($platform->fabricante)?></td>
+            <td><?=htmlspecialchars($platform->tipo)?></td>
+            <td>
+                <a href="manage_platforms/edit_platform/<?= $platform->id_plataforma ?>" type="button" class='btn btn-danger ml-auto'>Editar</a>
+            </td>
+            <td>
+                <a href="delete_platform/<?=$platform->id_plataforma?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>
+
+<?php else: ?>
+    <p>No existe ningún item.</p>
+<?php endif ?>
+
+
+<?php require 'templates/layout/footer.phtml'; ?>

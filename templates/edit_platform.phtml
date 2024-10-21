@@ -1,0 +1,29 @@
+<?php require 'templates/layout/header.phtml'; ?>
+
+<?php if(!empty($platform)): ?>
+    <h1>EDITAR ITEM ID: <?=$platform->id_plataforma ?></h1>
+    <table>
+         <thead>
+            <th>id_plataforma</th>
+            <th>Plataforma</th>
+            <th>Fabricante</th>
+            <th>Tipo</th>
+        </thead>
+            <tr>
+                <td><?=$platform->id_plataforma?></td>
+            <form action="edit_platform/<?=$platform->id_plataforma?>" method="POST">
+                <td><input name="plataforma" class="input-form-editar" type="text" value="<?=$platform->plataforma?>" required></td>
+                <td><input name="fabricante" class="input-form-editar" type="text" value="<?=$platform->fabricante?>" required></td>
+                <td><input name="tipo" class="input-form-editar" type="text" value="<?=$platform->tipo?>" required></td>
+                <td>
+                    <button type="submit">EDITAR</button>
+                </td>
+            </form>
+            </tr>
+    </table>
+<a href="manage_platforms"><-Volver</a>
+<?php else: ?>
+    <p>Este item no existe.</p>
+<?php endif ?>
+
+<?php require 'templates/layout/footer.phtml'; ?>
