@@ -1,5 +1,8 @@
 Trabajo especial Web2
 
+* IMPORTANTE:
+* - Actualizamos la base de datos, cambiamos las tabla de 'transacciones' a una de 'plataformas' para que tenga más sentido y sirva esta de categoría. Con la de transacciones no se nos ocurrió nada. La imagen del diagrama también la cambiamos.
+  - Y usamos email y contraseña para el login. (email: "web_admin@web2.com" | contraseña: "admin").
 Integrantes: -Ibarra Ivan Leonel -Ondicol Luciano Hernan
 
 Tematica: Tienda de videojuegos.
